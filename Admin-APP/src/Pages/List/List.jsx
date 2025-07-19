@@ -17,6 +17,8 @@ const List = ({url}) => {
     }
   
   }
+
+  
   const removefood =async (foodid)=>{
     const response = await axios.post(`${url}/api/food/remove`,{id:foodid})
     await fetchList()
