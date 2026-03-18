@@ -1,10 +1,12 @@
-.Header{
-    margin:40px;
-    margin-left: 10px;
+.Header {
+    margin: 40px 10px;
+
     position: relative;
     height: 40vw;
+    overflow: hidden;
 }
-.Header-Content{
+
+.Header-Content {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -15,24 +17,37 @@
     left: 3vw;
     animation: fadeIn 3s;
 }
-.Header-Content h2{
+
+.Header-Content h2 {
     font-weight: 500;
     color: #fff;
-    font-size: max(4.5vw ,22px);
+    font-size: max(4.5vw, 22px);
 }
-.Header-Content p{
+
+.Header-Content p {
     font-size: 1.2rem;
     color: #fff;
 }
-.Header-Content button{
+
+.Header img {
+    width: 100%;
+    /* FIX: prevent overflow */
+    height: 100%;
+    object-fit: cover;
+    /* keeps image nice */
+    border-radius: 15px;
+}
+
+.Header-Content button {
     border: none;
     font-weight: 500;
     color: #747474;
     padding: 1vw 2.3vw;
     background-color: white;
     border-radius: 50px;
-    font-size: max(1vw ,13px);
+    font-size: max(1vw, 13px);
 }
-.Header-Content button:hover{
+
+.Header-Content button:hover {
     color: tomato;
 }

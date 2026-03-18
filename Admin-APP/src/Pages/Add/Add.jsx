@@ -1,44 +1,43 @@
 import React from 'react'
 import './Add.css'
-import {assets} from '../../assets/assets'
+import { assets } from '../../assets/assets'
 import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-toastify'
-import { food_list } from '../../../../Frontend/src/assets/assets'
 
-const Add = ({url}) => {
-  const [image ,setimage] = useState(false)
-  const [ data ,setdata] =useState({
-    name:"",
-    description:"",
-    price:"",
-    category:"Salad"
+const Add = ({ url }) => {
+  const [image, setimage] = useState(false)
+  const [data, setdata] = useState({
+    name: "",
+    description: "",
+    price: "",
+    category: "Salad"
   })
-  const onChangeHandler = (event)=>{
+  const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setdata(data=>({...data,[name]:value}))
+    setdata(data => ({ ...data, [name]: value }))
   }
-  const onSubmitHandler = async (event)=>{
+  const onSubmitHandler = async (event) => {
     event.preventDefault();
     const formdata = new FormData();
-    formdata.append("name",data.name)
-    formdata.append("description",data.description)
-    formdata.append("price",data.price)
-    formdata.append("category",data.category)
-    formdata.append("image",image)
-    const response = await axios.post(`${url}/api/food/add`,formdata)
-    if(response.data.success){
+    formdata.append("name", data.name)
+    formdata.append("description", data.description)
+    formdata.append("price", data.price)
+    formdata.append("category", data.category)
+    formdata.append("image", image)
+    const response = await axios.post(`${url}/api/food/add`, formdata)
+    if (response.data.success) {
       setdata({
-        name:"",
-        description:"",
-        price:"",
-        category:"Salad"
+        name: "",
+        description: "",
+        price: "",
+        category: "Salad"
       })
       setimage(false)
       toast.success(response.data.message)
     }
-      
+
   }
   return (
     <div className='Add'>
@@ -47,9 +46,9 @@ const Add = ({url}) => {
         <div className="add-img-upload flex-col">
           <p>Upload image</p>
           <label htmlFor="image">
-            <img src={image?URL.createObjectURL(image):assets.upload_area} alt="" />
+            <img src={image ? URL.createObjectURL(image) : assets.upload_area} alt="" />
           </label>
-          <input onChange={(e)=>setimage(e.target.files[0])} type="file" id='image' hidden required />
+          <input onChange={(e) => setimage(e.target.files[0])} type="file" id='image' hidden required />
         </div>
 
         <div className="add-product-name flex-col">
@@ -83,7 +82,7 @@ const Add = ({url}) => {
         </div>
         <button type='submit' className='add-btn'>ADD</button>
       </form>
-      
+
     </div>
   )
 }
