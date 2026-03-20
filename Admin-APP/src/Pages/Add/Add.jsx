@@ -19,6 +19,7 @@ const Add = ({ url }) => {
     const value = event.target.value;
     setdata(data => ({ ...data, [name]: value }))
   }
+  //onSubmitHandler
   const onSubmitHandler = async (event) => {
     event.preventDefault();
     const formdata = new FormData();
